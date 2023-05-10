@@ -18,10 +18,15 @@ function Services() {
                 </ul>
             </nav>
         </header>
-        <div className = "hero">
-                <h1>Prueba servicios</h1>
-                <p>Encuentre aquí sus examenes médicos</p> 
+        <div className = "head">
+                <h1>Conoce todos nuestros</h1>
+                <h2>procedimientos</h2>
+                
             
+        </div>
+
+        <div className='container'>
+        <p>Encuentre aquí sus examenes médicos</p> 
         </div>
         <div className='footer'>
             <footer>
