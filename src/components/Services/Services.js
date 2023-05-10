@@ -1,9 +1,8 @@
-
-import './Main.css';
+import './Services.css';
 import {useNavigate} from "react-router-dom"
 
 
-function Main() {
+function Services() {
     const navigate = useNavigate()
   return (
     <div>
@@ -11,7 +10,7 @@ function Main() {
             <nav>
                 <ul>
                 <li onClick={()=>{navigate("/")}}><a href="localhost:3000">Inicio</a></li>
-                <li onClick={()=>{navigate("/services")}} ><a href="localhost:3000">Servicios</a></li>
+                <li onClick={()=>{navigate("/services")}}><a href="localhost:3000">Servicios</a></li>
                 <li><a href="localhost:3000">Contacto</a></li>
                 <li className="login" onClick={()=>{navigate("/login")}}>
                     <a href="login">Log in</a>
@@ -20,16 +19,9 @@ function Main() {
             </nav>
         </header>
         <div className = "hero">
-                <h1>Busqueda de resultados</h1>
+                <h1>Prueba servicios</h1>
                 <p>Encuentre aquí sus examenes médicos</p> 
-            <div className='search'>
-                <h2>Búsqueda de Exámenes Médicos</h2>
-                <form>
-                    <label htmlFor="exam-name">Digite su ID:</label>
-                    <input type="text" id="exam-name" name="exam-name" />
-                    <button type="submit">Buscar</button>
-                </form>
-            </div>
+            
         </div>
         <div className='footer'>
             <footer>
@@ -40,4 +32,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Services;
