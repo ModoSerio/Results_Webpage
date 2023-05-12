@@ -1,9 +1,11 @@
-import './Main.css';
-import {useNavigate} from "react-router-dom"
+import './SearchPacientes.css';
+import {useNavigate} from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
-
-function Main() {
+function SearchPacientes() {
     const navigate = useNavigate()
+    const location = useLocation();
+    const objeto = location.state?.objeto || {};
   return (
     <div>
         <header className="header">
@@ -13,15 +15,19 @@ function Main() {
                 <li onClick={()=>{navigate("/services")}} ><a href="localhost:3000">Servicios</a></li>
                 <li><a href="localhost:3000">Contacto</a></li>
                 <li className="login" onClick={()=>{navigate("/login")}}>
-                    <a href="login">Log in</a>
+                    <a href="login">Log out</a>
                 </li>
                 </ul>
             </nav>
         </header>
         <div className = "hero">
-                <h1>Busqueda de resultados de examenes medicos</h1>
-                <p>Ingrese en login para realizar una busqueda</p> 
-           
+                <h1>Busqueda de resultados</h1>
+                <p>Encuentre aquí sus examenes médicos</p> 
+            <div className='search'>
+                <h2>Búsqueda de Exámenes Médicos</h2>
+                <p>ID: {objeto.documento}<br/>Nombre: {objeto.nombre}<br/>Email: {objeto.email}</p>
+            
+            </div>
         </div>
         <div className='footer'>
             <footer>
@@ -32,4 +38,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default SearchPacientes;
