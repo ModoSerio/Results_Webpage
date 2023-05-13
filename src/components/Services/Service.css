@@ -1,0 +1,144 @@
+   /* Estilos del header */
+   .header_services {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 30px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+  
+  }
+  
+  .login a {
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .login a:hover {
+    background-color: #fff;
+    color: #333;
+  }
+ 
+ 
+ /* Estilos del titulo servicios */
+ .title-container {
+
+  position: relative;
+  background-image: url("health-information-networks-bireme-1400x700.jpg");
+  background-size: cover;
+  background-position: 20% 90%;
+  padding: 60px 20px;
+}
+
+.title_services {
+  position: absolute;
+  top: 20px;
+  left: 28.5%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+
+ /* Estilos del container */
+
+.container1{
+  position: relative;
+  background-size: cover;
+  background-position:bottom;
+}
+
+.subtitleS1 {
+  position: absolute;
+  text-decoration: underline;
+  top: 50px;
+  left: 15%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #333;
+  text-shadow: 1px 1px 1px whitesmoke;
+  }
+
+
+.subtitleS2 {
+  position: absolute;
+  top: 135px;
+  left: 20%;
+  font-size: 1.5rem;
+  transform: translateX(-50%);
+  color: #333;
+  text-shadow: 1px 1px 1px whitesmoke;
+
+  }
+
+.container2 {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    top:400px;
+    width: 100%;
+
+  }
+  
+  .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .col {
+    background-color: #ddd;
+    padding: 20px;
+  }
+
+
+
+  .App_services {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .app-services {
+    flex-grow: 1;
+  }
+  
+  .footer_services {
+    position: fixed;
+    background-color: #f2f2f2;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .title_services {
+        font-size: 2rem;
+        top: 10px;
+    }
+}
