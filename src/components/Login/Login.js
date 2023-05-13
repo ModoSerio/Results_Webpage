@@ -10,62 +10,54 @@ import { useNavigate } from "react-router-dom";
 //Esta va a ser nuestra Usuarios, esta misma lógica se puede usar al
 //con la busqueda de examenes
 
-const Usuarios = [
-  {
-    _id: "6436e55843fce05a2b24939c4",
-    Documento: "1",
-    name: "Valelinda",
-    email: "valelinda@crustatia.com",
-    password: "1",
-    role: 0 //Paciente
-  }, {
-    _id: "6436e55843fce05a2b24939c",
-    Documento: "3969131054",
-    name: "Wright Chambers",
-    email: "wrightchambers@crustatia.com",
-    password: "12",
-    role: 0 //Paciente
-  },
-  {
-    _id: "6436e55843fce05a2b249399",
-    Documento: "2052398140",
-    name: "Daugherty Beasley",
-    email: "daughertybeasley@crustatia.com",
-    password: "7792678",
-    role: 0
-  },
-  {
-    _id: "6436e55843fce05a2b249397",
-    Documento: "439647782",
-    name: "Hollie Fry",
-    email: "holliefry@crustatia.com",
-    password: "8313574",
-    role: 0
-  },
-  {
-    _id: "6436e55843fce05a2b24939b",
-    Documento: "3574488393",
-    name: "Erna Holcomb",
-    email: "ernaholcomb@crustatia.com",
-    password: "5580185",
-    role: 0
-  },
-  {
-    _id: "6436e55843fce05a2b2494c2",
-    Documento: "6303004401",
-    name: "Ramsey Hebert",
-    email: "ramseyhebert@crustatia.com",
-    password: "9728084",
-    role: 1
-  },
-  {
-    _id: "6436e55843fce05a2b2494c1",
-    Documento: "2",
-    name: "Aguilar Casey",
-    email: "aguilarcasey@crustatia.com",
-    password: "c",
-    role: 1 //Personal salud
-  }];
+const Usuarios=[{
+  _id: "6436e55843fce05a2b24939c",
+  Documento: "3969131054",
+  name: "Wright Chambers",
+  email: "wrightchambers@crustatia.com",
+  password: "12",
+  role: 0
+},
+{
+  _id: "6436e55843fce05a2b249399",
+  Documento:"2052398140",
+  name: "Daugherty Beasley",
+  email: "daughertybeasley@crustatia.com",
+  password: "7792678",
+  role: 0
+},
+{
+  _id: "6436e55843fce05a2b249397",
+  Documento: "439647782",
+  name: "Hollie Fry",
+  email: "holliefry@crustatia.com",
+  password: "45",
+  role: 0
+},
+{
+  _id: "6436e55843fce05a2b24939b",
+  Documento: "3574488393",
+  name: "Erna Holcomb",
+  email: "ernaholcomb@crustatia.com",
+  password: "55",
+  role: 0
+},
+{
+  _id: "6436e55843fce05a2b2494c2",
+  Documento: "6303004401",
+  name: "Ramsey Hebert",
+  email: "ramseyhebert@crustatia.com",
+  password: "9728084",
+  role: 1
+},
+{
+  _id: "6436e55843fce05a2b2494c1",
+  Documento: "1630841005",
+  name: "Aguilar Casey",
+  email: "aguilarcasey@crustatia.com",
+  password: "34",
+  role: 1
+}];
 const errors = {
   uname: "Email inválido",
   pass: "Contraseña inválida"

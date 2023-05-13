@@ -34,6 +34,26 @@ const examen = [{
     id_tipo_examen: "Creatina en suero",
     resultado: "dentro de rango",
     $id: "6436d57043fce05a2b24926j"
+}, {
+    Description: "Des5.\r\n",
+    Status: "Realizado",
+    address: "102 Ridgewood Avenue, Clarktown, Michigan, 2794",
+    Date: "2022-10-09T08:51:01 +05:00",
+    id_paciente: "6436e55843fce05a2b24939h",
+    id_usuario: "6436d57043fce05a2b24926d",
+    id_tipo_examen: "Ferritina",
+    resultado: "dentro de rango",
+    $id: "6436d57043fce05a2b24926h"
+}, {
+    Description: "Des6.\r\n",
+    Status: "Realizado",
+    address: "102 Ridgewood Avenue, Clarktown, Michigan, 2794",
+    Date: "2022-10-09T08:51:01 +05:00",
+    id_paciente: "6436e55843fce05a2b24939h",
+    id_usuario: "6436e55843fce05a2b24939h",
+    id_tipo_examen: "Creatina en suero",
+    resultado: "dentro de rango",
+    $id: "6436d57043fce05a2b24926j"
 }];
 
 const paciente = [{
@@ -43,15 +63,33 @@ const paciente = [{
     age: 72,
     gender: "male",
     email: "wrightchambers@crustatia.com"
+}, {
+    id: "6436e55843fce05a2b24939h",
+    Documento: "3574488393",
+    name: "Erna Holcomb",
+    age: 60,
+    gender: "Female",
+    email: "ernaholcomb@crustatia.com",
+
+}, {
+    id: "6436e55843fce05a2b24939i",
+    Documento: "2052398140",
+    name: "Daugherty Beasley",
+    age: 30,
+    gender: "Female",
+    email: "daughertybeasley@crustatia.com",
+
+},
+{
+    id: "6436e55843fce05a2b24939j",
+    Documento: "439647782",
+    name: "Hollie Fry",
+    age: 30,
+    gender: "Female",
+    email: "holliefry@crustatia.com",
+
 }];
-/*
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.documento}</td>
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.nombre}</td>
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.edad}</td>
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Status}</td>
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Date}</td>
-<td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Description}</td>
-*/
+
 function Search() {
     const navigate = useNavigate()
     const [texto, setTexto] = useState('');
@@ -65,30 +103,42 @@ function Search() {
 
 
     function manejarClickBoton() {
-        const userData = paciente.find((user) => user.Documento === texto || user.email ===texto || user.name ===texto) ;
+        const userData = paciente.find((user) => user.Documento === texto || user.email === texto || user.name === texto);
         if (userData) {
             //setTextoGenerado({documento:userData.Documento,nombre:userData.name,edad:userData.age,genero:userData.gender});
             console.log("Se encontro el documento", texto);
             var doc = userData.id
             var Examen = examen.filter((e) => e.id_paciente === doc);
-            console.log(Examen[0])
-            console.log("adress", Examen[1].address);
+            if (Examen.length !== 0) {
+                console.log(Examen[0])
+                console.log("adress", Examen[1].address);
+                console.log("longitud", Examen.length)
 
-            for (let i = 0; i < Examen.length; i++) {
-                var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
-                datapaciente_examen.push(temp)
-                console.log(datapaciente_examen)
+                for (let i = 0; i < Examen.length; i++) {
+                    var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
+                    datapaciente_examen.push(temp)
+                    console.log(datapaciente_examen)
+
+                }
+                //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
+                setMostrarexamen(true);
+                console.log('La función se ejecutó solo una vez');
+
             }
+            else {
+                //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
 
+                console.log('no hay examenes');
+                document.getElementById('no_examen').innerHTML = 'No hay examenes de este paciente';
 
-            //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
-            setMostrarexamen(true);
+            }
         }
 
 
         else {
             console.log("No se encontro el documento", texto);
-            setMostrarexamen(false);
+
+            document.getElementById('no_examen').innerHTML = 'No hay examenes de este paciente';
             setMostrarerror(true)
 
         }
@@ -121,41 +171,43 @@ function Search() {
 
                 </div>
                 {mostrarexamen && <div className='search'>
+                    <div class="tableCont_search">
 
-                    <table style={{ borderCollapse: 'collapse' }}>
-                        <thead>
-                            <tr>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>ID</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Nombre</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Edad</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Estado</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Fecha</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Descripcion</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Tipo de Examen</th>
-                                <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>PDF</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {datapaciente_examen.map(exam => (
-                                <tr key={exam.id}>
-
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.documento}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.nombre}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.edad}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Status}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Date}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Description}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.id_tipo_examen}</td>
-                                    <td style={{ border: '1px solid black', padding: '0.5rem' }}>Link_PDF</td>
+                        <table style={{ borderCollapse: 'collapse' }}>
+                            <thead>
+                                <tr>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>ID</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Nombre</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Edad</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Estado</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Fecha</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Descripcion</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>Tipo de Examen</th>
+                                    <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>PDF</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {datapaciente_examen.map(exam => (
+                                    <tr key={exam.id}>
 
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.documento}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.nombre}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.edad}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Status}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Date}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.Description}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>{exam.datosexamen.id_tipo_examen}</td>
+                                        <td style={{ border: '1px solid black', padding: '0.5rem' }}>Link_PDF</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
 
 
                 </div>}
                 <p>{!mostrarexamen && mostrarerror && "Documento no encontrado"}</p>
+                <div id="no_examen"></div>
 
 
             </div>

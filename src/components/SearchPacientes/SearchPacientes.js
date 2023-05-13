@@ -33,6 +33,26 @@ const examen = [{
     id_tipo_examen: "Creatina en suero",
     resultado: "dentro de rango",
     $id: "6436d57043fce05a2b24926j"
+}, {
+    Description: "Des5.\r\n",
+    Status: "Realizado",
+    address: "102 Ridgewood Avenue, Clarktown, Michigan, 2794",
+    Date: "2022-10-09T08:51:01 +05:00",
+    id_paciente: "6436e55843fce05a2b24939h",
+    id_usuario: "6436d57043fce05a2b24926d",
+    id_tipo_examen: "Ferritina",
+    resultado: "dentro de rango",
+    $id: "6436d57043fce05a2b24926h"
+}, {
+    Description: "Des6.\r\n",
+    Status: "Realizado",
+    address: "102 Ridgewood Avenue, Clarktown, Michigan, 2794",
+    Date: "2022-10-09T08:51:01 +05:00",
+    id_paciente: "6436e55843fce05a2b24939h",
+    id_usuario: "6436e55843fce05a2b24939h",
+    id_tipo_examen: "Creatina en suero",
+    resultado: "dentro de rango",
+    $id: "6436d57043fce05a2b24926j"
 }];
 
 const paciente = [{
@@ -42,8 +62,32 @@ const paciente = [{
     age: 72,
     gender: "male",
     email: "wrightchambers@crustatia.com"
-}];
+}, {
+    id: "6436e55843fce05a2b24939h",
+    Documento: "3574488393",
+    name: "Erna Holcomb",
+    age: 60,
+    gender: "Female",
+    email: "ernaholcomb@crustatia.com",
 
+}, {
+    id: "6436e55843fce05a2b24939i",
+    Documento: "2052398140",
+    name: "Daugherty Beasley",
+    age: 30,
+    gender: "Female",
+    email: "daughertybeasley@crustatia.com",
+
+},
+{
+    id: "6436e55843fce05a2b24939j",
+    Documento: "439647782",
+    name: "Hollie Fry",
+    age: 30,
+    gender: "Female",
+    email: "holliefry@crustatia.com",
+
+}];
 
 
 function SearchPacientes() {
@@ -52,60 +96,73 @@ function SearchPacientes() {
     const [datapaciente_examen] = useState([]);
     const [mostrarexamen, setMostrarexamen] = useState(false);
     const [mostrarerror] = useState(false);
-    
+
 
 
     //setTextoGenerado({documento:userData.Documento,nombre:userData.name,edad:userData.age,genero:userData.gender});
 
-        const hasExecuted = useRef(false);
+    const hasExecuted = useRef(false);
 
-        useEffect(() => {
-            if (!hasExecuted.current) {
-                const userData = paciente.find((user) => user.Documento === myObject.Documento);
-                console.log("Se encontro el documento", userData.id);
-                var doc = userData.id
-                var Examen = examen.filter((e) => e.id_paciente === doc);
+    useEffect(() => {
+        if (!hasExecuted.current) {
+            const userData = paciente.find((user) => user.Documento === myObject.Documento);
+            console.log("Se encontro el documento", userData.id);
+            var doc = userData.id
+            var Examen = examen.filter((e) => e.id_paciente === doc);
+            if (Examen.length !== 0) {
                 console.log(Examen[0])
                 console.log("adress", Examen[1].address);
-                console.log(Examen.length)
+                console.log("longitud", Examen.length)
 
                 for (let i = 0; i < Examen.length; i++) {
-                        var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
-                        datapaciente_examen.push(temp)
-                        console.log(datapaciente_examen)
+                    var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
+                    datapaciente_examen.push(temp)
+                    console.log(datapaciente_examen)
 
                 }
-
-
                 //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
                 setMostrarexamen(true);
                 console.log('La función se ejecutó solo una vez');
                 hasExecuted.current = true;
             }
-        });
+            else {
+                //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
+
+                console.log('no hay examenes');
+                document.getElementById('no_examen').innerHTML = 'No hay examenes de este paciente';
+                hasExecuted.current = true;
+            }
+
+
+
+
+        }
+    });
 
 
 
 
 
-        return (
-            <div>
-                <header className="header">
-                    <nav>
-                        <ul>
-                            <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
-                            <li onClick={() => { navigate("/services") }} ><a href="localhost:3000">Servicios</a></li>
-                            <li onClick={() => { navigate("/contact") }}><a href="localhost:3000">Contacto</a></li>
-                            <li className="login" onClick={() => { navigate("/login") }}>
-                                <a href="login">Log out</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                <div className="hero_pacientes">
-                    <h1>Busqueda de resultados</h1>
-                    <p>Encuentre aquí sus examenes médicos</p>
-                    {mostrarexamen && <div className='search'>
+    return (
+        <div>
+            <header className="header">
+                <nav>
+                    <ul>
+                        <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
+                        <li onClick={() => { navigate("/services") }} ><a href="localhost:3000">Servicios</a></li>
+                        <li onClick={() => { navigate("/contact") }}><a href="localhost:3000">Contacto</a></li>
+                        <li className="login" onClick={() => { navigate("/login") }}>
+                            <a href="login">Log out</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div className="hero_pacientes">
+                <h1>Busqueda de resultados</h1>
+                <p>Encuentre aquí sus examenes médicos</p>
+                {mostrarexamen && <div className='search_pacientes'>
+
+                    <div Class="table_container_pacientes">
 
                         <table style={{ borderCollapse: 'collapse' }}>
                             <thead>
@@ -136,22 +193,25 @@ function SearchPacientes() {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
 
 
+                </div>}
+                <p>{!mostrarexamen && mostrarerror && "Documento no encontrado"}</p>
 
-                    </div>}
-                    <p>{!mostrarexamen && mostrarerror && "Documento no encontrado"}</p>
-
-                </div>
-                <div className='footer_spacientes'>
-                    <footer>
-                        <p>&copy; Desarrollo Web Udea 2023</p>
-                    </footer>
+                <div id="no_examen"></div>
 
 
-                </div>
             </div>
-        );
-    }
+            <div className='footer_spacientes'>
+                <footer>
+                    <p>&copy; Desarrollo Web Udea 2023</p>
+                </footer>
 
-    export default SearchPacientes;
+
+            </div>
+        </div>
+    );
+}
+
+export default SearchPacientes;
