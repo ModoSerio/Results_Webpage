@@ -19,18 +19,19 @@ function Main() {
                 </nav>
             </header>
             <div className="hero">
+
             </div>
 
             <div className="texto_main">
-                <h1>Busqueda de resultados de examenes medicos</h1>
+                <h1 >Busqueda de resultados de examenes medicos</h1>
                 <p>Ingrese en login para realizar una busqueda</p>
             </div>
             <div className='footer_main'>
                 <footer>
-                <p>&copy; Desarrollo Web Udea 2023</p>
+                    <p>&copy; Desarrollo Web Udea 2023</p>
                 </footer>
-                    
-               
+
+
             </div>
         </div>
     );

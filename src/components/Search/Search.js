@@ -123,6 +123,7 @@ function Search() {
                 //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
                 setMostrarexamen(true);
                 console.log('La función se ejecutó solo una vez');
+                document.getElementById('no_examen').innerHTML = '';
 
             }
             else {

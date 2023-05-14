@@ -212,3 +212,33 @@ nav a {
   height: 60px;
   text-align: center;
 }
+
+.texto_main h1{
+  font-size: 3.5vw;
+  position: relative;
+  left:10%;
+}
+.texto_main p{
+  font-size: 1.5vw;
+  position: relative;
+
+  
+}
+
+@media only screen and (max-width: 768px) {
+  .principal {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}

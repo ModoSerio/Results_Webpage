@@ -48,16 +48,17 @@
   position: relative;
   background-image: url("health-information-networks-bireme-1400x700.jpg");
   background-size: cover;
-  background-position: 20% 90%;
+  background-position: 20% 50%;
   padding: 60px 20px;
+  width: 100%;
 }
 
 .title_services {
-  position: absolute;
+  position: relative;
   top: 20px;
-  left: 28.5%;
+  left: 50%;
   transform: translateX(-50%);
-  font-size: 3rem;
+  font-size: 4vw;
   color: white;
   text-shadow: 1px 1px 1px black;
 }
@@ -72,22 +73,22 @@
 }
 
 .subtitleS1 {
-  position: absolute;
+  position: relative;
   text-decoration: underline;
   top: 50px;
-  left: 15%;
+  left: 60%;
   transform: translateX(-50%);
-  font-size: 3rem;
+  font-size: 3vw;
   color: #333;
   text-shadow: 1px 1px 1px whitesmoke;
   }
 
 
 .subtitleS2 {
-  position: absolute;
-  top: 135px;
-  left: 20%;
-  font-size: 1.5rem;
+  position: relative;
+  top: 120px;
+  left: 70%;
+  font-size: 1.5vw;
   transform: translateX(-50%);
   color: #333;
   text-shadow: 1px 1px 1px whitesmoke;
@@ -95,22 +96,26 @@
   }
 
 .container2 {
-    position: absolute;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    top:400px;
-    width: 100%;
+    top:150px;
+    left: 200px;
+    width: 80vw;
+    padding-bottom: 80px;
 
   }
   
   .row {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
   }
   
   .col {
+    position: relative;
     background-color: #ddd;
     padding: 20px;
   }
