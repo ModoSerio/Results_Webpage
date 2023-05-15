@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 
 function Contact() {
-    const navigate = useNavigate()
+    const navigate = useNavigate() /*Para poder navegar */ 
     
     return (
         <div className='App'>
@@ -13,7 +13,7 @@ function Contact() {
 
                 <header className="header">
                     <nav>
-                        <ul>
+                        <ul> {/* Navbar*/} 
                             <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
                             <li onClick={() => { navigate("/services") }}><a href="localhost:3000">Servicios</a></li>
                             <li><a href="localhost:3000">Contacto</a></li>
@@ -22,6 +22,7 @@ function Contact() {
                             </li>
                         </ul>
                     </nav>
+                {/*Texto de la pagina */} 
                 </header>
                 <div class="title-container">
                     <h1 class="title">Conoce nuestros contactos</h1>
@@ -45,6 +46,7 @@ function Contact() {
 
 
             </div>
+            {/*El footer */} 
             <div className='footer_contact'>
                 <footer>
                 <p>&copy; Desarrollo Web Udea 2023</p>

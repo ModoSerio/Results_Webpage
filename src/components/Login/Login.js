@@ -1,3 +1,4 @@
+/*Importamos los componentes y el contexto */ 
 import { useState } from "react";
 import './Login.css'
 import Search from "../Search/Search";
@@ -7,8 +8,7 @@ import { AppContext } from '../AppContext';
 import { useNavigate } from "react-router-dom";
 
 
-//Esta va a ser nuestra Usuarios, esta misma lógica se puede usar al
-//con la busqueda de examenes
+//Esta va a ser nuestra Usuarios
 
 const Usuarios=[{
   _id: "6436e55843fce05a2b24939c",
@@ -52,12 +52,14 @@ const Usuarios=[{
 },
 {
   _id: "6436e55843fce05a2b2494c1",
-  Documento: "1630841005",
+  Documento: "  ",
   name: "Aguilar Casey",
   email: "aguilarcasey@crustatia.com",
   password: "34",
   role: 1
 }];
+
+//Errores posibles
 const errors = {
   uname: "Email inválido",
   pass: "Contraseña inválida"
@@ -65,9 +67,9 @@ const errors = {
 
 
 function Login({ setUser }) {
-  const navigate = useNavigate()
-  const { setMyObject } = useContext(AppContext);
-  const [errorMessages, setErrorMessages] = useState({});
+  const navigate = useNavigate()/* Navegar*/ 
+  const { setMyObject } = useContext(AppContext);/*Compartir datos */
+  const [errorMessages, setErrorMessages] = useState({});/*Variables y metodos set */ 
   const [isPaciente, setisPaciente] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = (event) => {
@@ -109,12 +111,13 @@ function Login({ setUser }) {
     <div>
       <header className="header">
         <nav>
-          <ul>
+          <ul>{/* Navbar*/} 
             <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
             <li onClick={() => { navigate("/services") }}><a href="localhost:3000">Servicios</a></li>
             <li onClick={() => { navigate("/contact") }}><a href="localhost:3000">Contacto</a></li>
           </ul>
         </nav>
+      {/*Texto de la pagina*/} 
       </header>
       <div className="hero_login">
         <p>Por favor ingrese su usuario y contraseña</p>
@@ -132,6 +135,7 @@ function Login({ setUser }) {
 
           </form>
         </div>
+         {/* Footer*/} 
         <div className='footer_login'>
           <footer>
           <p> &copy; Desarrollo Web Udea 2023</p>

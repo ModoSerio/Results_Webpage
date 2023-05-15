@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { useContext } from 'react';
 import { AppContext } from '../AppContext';
+
+//Lista examenes
 const examen = [{
     Description: "Deserunt dolor velit ad id minim minim dolor. Deserunt voluptate mollit pariatur culpa. Tempor dolor elit culpa velit do nulla ea nostrud deserunt nostrud quis. Ad aliquip commodo tempor aliqua consequat sit cupidatat non cillum. Elit nostrud sit incididunt enim eu aliquip pariatur magna aute aute elit voluptate anim enim.\r\n",
     Status: "Pendiente",
@@ -55,6 +57,7 @@ const examen = [{
     $id: "6436d57043fce05a2b24926j"
 }];
 
+//Lista pacientes
 const paciente = [{
     id: "6436d57043fce05a2b24926d",
     Documento: "3969131054",
@@ -91,9 +94,9 @@ const paciente = [{
 
 
 function SearchPacientes() {
-    const navigate = useNavigate()
-    const { myObject } = useContext(AppContext);
-    const [datapaciente_examen] = useState([]);
+    const navigate = useNavigate()//Navegar
+    const { myObject } = useContext(AppContext);//Contexto 
+    const [datapaciente_examen] = useState([]);//Vsriables
     const [mostrarexamen, setMostrarexamen] = useState(false);
     const [mostrarerror] = useState(false);
 
@@ -103,20 +106,20 @@ function SearchPacientes() {
 
     const hasExecuted = useRef(false);
 
-    useEffect(() => {
+    useEffect(() => {//Para que no se recargue la pagina
         if (!hasExecuted.current) {
-            const userData = paciente.find((user) => user.Documento === myObject.Documento);
+            const userData = paciente.find((user) => user.Documento === myObject.Documento);//Filtro por documento
             console.log("Se encontro el documento", userData.id);
-            var doc = userData.id
-            var Examen = examen.filter((e) => e.id_paciente === doc);
-            if (Examen.length !== 0) {
+            var doc = userData.id//Documento
+            var Examen = examen.filter((e) => e.id_paciente === doc);//Filtro examen por documento
+            if (Examen.length !== 0) {//Si hay examenes
                 console.log(Examen[0])
                 console.log("adress", Examen[1].address);
                 console.log("longitud", Examen.length)
 
-                for (let i = 0; i < Examen.length; i++) {
+                for (let i = 0; i < Examen.length; i++) {//Lista de examenes
                     var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
-                    datapaciente_examen.push(temp)
+                    datapaciente_examen.push(temp)//Push de los examenes a la lista
                     console.log(datapaciente_examen)
 
                 }
@@ -125,7 +128,7 @@ function SearchPacientes() {
                 console.log('La función se ejecutó solo una vez');
                 hasExecuted.current = true;
             }
-            else {
+            else {//Si no hay examenes
                 //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
 
                 console.log('no hay examenes');
@@ -160,6 +163,7 @@ function SearchPacientes() {
             <div className="hero_pacientes">
                 <h1>Busqueda de resultados</h1>
                 <p>Encuentre aquí sus examenes médicos</p>
+                {/*Si hay examenes entra*/} 
                 {mostrarexamen && <div className='search_pacientes'>
 
                     <div Class="table_container_pacientes">
@@ -177,7 +181,7 @@ function SearchPacientes() {
                                     <th style={{ borderBottom: '1px solid black', padding: '0.5rem' }}>PDF</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>{/*Cantidad de examenes para las filas con la funcion map*/} 
                                 {datapaciente_examen.map(exam => (
                                     <tr key={exam.id}>
 
@@ -196,7 +200,7 @@ function SearchPacientes() {
                     </div>
 
 
-                </div>}
+                </div>}{/*Si no hay examenes entra*/} 
                 <p>{!mostrarexamen && mostrarerror && "Documento no encontrado"}</p>
 
                 <div id="no_examen"></div>

@@ -2,8 +2,9 @@ import { useState } from "react";
 import './Search.css';
 import { useNavigate } from "react-router-dom"
 
+//Datos para usar en la aplicacion
 
-
+//Eaxemenes
 const examen = [{
     Description: "Deserunt dolor velit ad id minim minim dolor. Deserunt voluptate mollit pariatur culpa. Tempor dolor elit culpa velit do nulla ea nostrud deserunt nostrud quis. Ad aliquip commodo tempor aliqua consequat sit cupidatat non cillum. Elit nostrud sit incididunt enim eu aliquip pariatur magna aute aute elit voluptate anim enim.\r\n",
     Status: "Pendiente",
@@ -56,6 +57,7 @@ const examen = [{
     $id: "6436d57043fce05a2b24926j"
 }];
 
+//Paciente
 const paciente = [{
     id: "6436d57043fce05a2b24926d",
     Documento: "3969131054",
@@ -91,30 +93,30 @@ const paciente = [{
 }];
 
 function Search() {
-    const navigate = useNavigate()
-    const [texto, setTexto] = useState('');
+    const navigate = useNavigate()//Navegar
+    const [texto, setTexto] = useState('');//Variables y metodos set
     const [datapaciente_examen] = useState([]);
     const [mostrarexamen, setMostrarexamen] = useState(false);
     const [mostrarerror, setMostrarerror] = useState(false);
 
-    const manejarCambioTexto = (event) => {
+    const manejarCambioTexto = (event) => {//Evento por cambio en el input
         setTexto(event.target.value);
     };
 
 
-    function manejarClickBoton() {
-        const userData = paciente.find((user) => user.Documento === texto || user.email === texto || user.name === texto);
-        if (userData) {
+    function manejarClickBoton() {//Funcion al dar clcik
+        const userData = paciente.find((user) => user.Documento === texto || user.email === texto || user.name === texto);//Buscar por documento, nombre o email
+        if (userData) {//Entra si encuentra el paciente
             //setTextoGenerado({documento:userData.Documento,nombre:userData.name,edad:userData.age,genero:userData.gender});
             console.log("Se encontro el documento", texto);
-            var doc = userData.id
-            var Examen = examen.filter((e) => e.id_paciente === doc);
-            if (Examen.length !== 0) {
+            var doc = userData.id//Almacenamos el documento
+            var Examen = examen.filter((e) => e.id_paciente === doc);//se encuentran los examenes
+            if (Examen.length !== 0) {//Si encuentra los examenes entra al condicional
                 console.log(Examen[0])
                 console.log("adress", Examen[1].address);
                 console.log("longitud", Examen.length)
 
-                for (let i = 0; i < Examen.length; i++) {
+                for (let i = 0; i < Examen.length; i++) {//Lista de examenes
                     var temp = { documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen[i] }
                     datapaciente_examen.push(temp)
                     console.log(datapaciente_examen)
@@ -126,7 +128,7 @@ function Search() {
                 document.getElementById('no_examen').innerHTML = '';
 
             }
-            else {
+            else {//Sino imprime que no  hay examenes en el div no_examen
                 //setTextoGenerado({ documento: userData.Documento, nombre: userData.name, edad: userData.age, genero: userData.gender, datosexamen: Examen });
 
                 console.log('no hay examenes');
@@ -136,7 +138,7 @@ function Search() {
         }
 
 
-        else {
+        else {//Se imprime en caso de que no hay documento
             console.log("No se encontro el documento", texto);
 
             document.getElementById('no_examen').innerHTML = 'No hay examenes de este paciente';
@@ -151,7 +153,7 @@ function Search() {
         <div>
             <header className="header">
                 <nav>
-                    <ul>
+                    <ul>{/* Navbar*/} 
                         <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
                         <li onClick={() => { navigate("/services") }} ><a href="localhost:3000">Servicios</a></li>
                         <li onClick={() => { navigate("/contact") }}><a href="localhost:3000">Contacto</a></li>
@@ -161,6 +163,7 @@ function Search() {
                     </ul>
                 </nav>
             </header>
+            {/* Texto*/} 
 
             <div className="hero_search">
                 <h1>Busqueda de resultados</h1>
@@ -171,6 +174,8 @@ function Search() {
                     <button type="submit" onClick={() => manejarClickBoton(document.getElementById('idFiltro').value)}>Buscar</button>
 
                 </div>
+                {/*Tabla que se conecta con la funcion */} 
+                {/* Si mostrarexamen es true entra al div*/} 
                 {mostrarexamen && <div className='search'>
                     <div class="tableCont_search">
 
@@ -188,6 +193,7 @@ function Search() {
                                 </tr>
                             </thead>
                             <tbody>
+                                {/*Map de la cantidad de examenes que hay */} 
                                 {datapaciente_examen.map(exam => (
                                     <tr key={exam.id}>
 
@@ -207,6 +213,7 @@ function Search() {
 
 
                 </div>}
+                {/*Si mostrarexamen es falso y mostrarerror entonces muestra documento no encontrado */} 
                 <p>{!mostrarexamen && mostrarerror && "Documento no encontrado"}</p>
                 <div id="no_examen"></div>
 
