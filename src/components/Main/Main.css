@@ -33,6 +33,7 @@ ul {
 }
 
 nav ul {
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -68,13 +69,14 @@ nav a {
 
 /* Estilos del hero */
 .hero {
+  position: relative;
   background-color: #fff;
   text-align: center;
   position: relative;
   background-image: url("excepcional.jpg");
   background-size: cover;
   background-position: 20% 50%;
-  width: 100%;
+  width: 100vw;
   height: 300px;
   /* ajusta según sea necesario */
 
@@ -187,22 +189,9 @@ nav a {
   padding: 10px 20px;
 }
 
-.hero {
-  background-color: #f2f2f2;
-  padding: 2em;
-  text-align: center;
 
-}
 
-.hero h1 {
-  font-size: 3em;
 
-}
-
-.hero p {
-  font-size: 1.5em;
-
-}
 
 .footer_main {
   position: fixed;
@@ -239,6 +228,6 @@ nav a {
 
 @media only screen and (max-width: 576px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }

@@ -23,7 +23,7 @@ function Services() {
                     </nav>
                 </header>
                 <div class="title-container">
-                    <h1 class="title_services">Conoce todos nuestros procedimientos</h1>  
+                    <h1 class="title_services">Conoce todos nuestros procedimientos</h1>
                 </div>
 
                 <div class="container1">
@@ -34,16 +34,16 @@ function Services() {
                 </div>
 
                 <div class='container2'>
-                    <div class="row">
-                        {items.slice(0, 4).map(item => (
-                            <div class="col" key={item}>{item}</div>
-                        ))}
-                    </div>
-                    <div class="row">
-                        {items.slice(4).map(item => (
-                            <div class="col" key={item}>{item}</div>
-                        ))}
-                    </div>
+                    <ul className="lista_services">
+                        <li>Fosfatasa</li>
+                        <li>Ferritina</li>
+                        <li>Colesterol HDL</li>
+                        <li>Trigliceridos</li>
+                        <li>Creatina en suero</li>
+                        <li>Cuadro hematico</li>
+                        <li>Parcial de orina</li>
+                        <li>Coprocopico</li>
+                    </ul>
 
 
                 </div>
@@ -61,3 +61,22 @@ function Services() {
 }
 
 export default Services;
+
+/*
+<div class='container2'>
+                    <div class="row">
+                        {items.slice(0, 4).map(item => (
+                            <div class="col" key={item}>{item}</div>
+                        ))}
+                    </div>
+                    <div class="row">
+                        {items.slice(4).map(item => (
+                            <div class="col" key={item}>{item}</div>
+                        ))}
+                    </div>
+
+
+                </div>
+
+
+*/ 
