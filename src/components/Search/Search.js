@@ -154,9 +154,6 @@ function Search() {
             <header className="header">
                 <nav>
                     <ul>{/* Navbar*/} 
-                        <li onClick={() => { navigate("/") }}><a href="localhost:3000">Inicio</a></li>
-                        <li onClick={() => { navigate("/services") }} ><a href="localhost:3000">Servicios</a></li>
-                        <li onClick={() => { navigate("/contact") }}><a href="localhost:3000">Contacto</a></li>
                         <li className="login" onClick={() => { navigate("/login") }}>
                             <a href="login">Log out</a>
                         </li>
